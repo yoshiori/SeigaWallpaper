@@ -18,7 +18,7 @@ public class SeigaWallpaperActivity extends Activity {
 					public void onClick(View v) {
 						try {
 							Downloader
-									.download("http://seiga.nicovideo.jp/clip/304308");
+									.download(304308);
 						} catch (Exception e) {
 
 						}
