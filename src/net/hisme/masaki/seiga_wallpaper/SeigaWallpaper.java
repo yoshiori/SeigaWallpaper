@@ -2,6 +2,7 @@ package net.hisme.masaki.seiga_wallpaper;
 
 import android.app.Application;
 import android.graphics.Bitmap;
+import android.preference.PreferenceManager;
 
 public class SeigaWallpaper extends Application {
 	protected static SeigaWallpaper self;
@@ -24,8 +25,8 @@ public class SeigaWallpaper extends Application {
 	 * @return clip id
 	 */
 	public int clip_id() {
-		return getSharedPreferences("seiga_clip", Application.MODE_PRIVATE)
-				.getInt("id", 0);
+		return PreferenceManager.getDefaultSharedPreferences(this).getInt(
+				"clip_id", -1);
 	}
 
 	public ImageUrlList image_url_list() throws Exception {

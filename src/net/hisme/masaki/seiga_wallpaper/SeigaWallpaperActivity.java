@@ -1,7 +1,11 @@
 package net.hisme.masaki.seiga_wallpaper;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -18,7 +22,34 @@ public class SeigaWallpaperActivity extends Activity {
 				reload();
 			}
 		});
+	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_config:
+			startActivity(new Intent(SeigaWallpaperActivity.this,
+					ClipActivity.class));
+			return true;
+		case R.id.menu_reload:
+			// reloadSchedule();
+			return true;
+		case R.id.menu_help:
+			// startActivity(new Intent(MainActivity.this, HelpActivity.class));
+			return true;
+		case R.id.menu_about:
+			// startActivity(new Intent(MainActivity.this,
+			// AboutActivity.class));
+			return true;
+		}
+		return false;
 	}
 
 	public void reload() {
