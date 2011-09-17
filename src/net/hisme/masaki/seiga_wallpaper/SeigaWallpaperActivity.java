@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.util.Log;
 
 public class SeigaWallpaperActivity extends Activity {
 	@Override
@@ -39,7 +40,12 @@ public class SeigaWallpaperActivity extends Activity {
 					ClipActivity.class));
 			return true;
 		case R.id.menu_reload:
-			// reloadSchedule();
+			try {
+				new Clip().save();
+			} catch (Exception e) {
+				Log.d("SeigaWallpaper", String.format("Exception: %s", e
+						.getMessage()));
+			}
 			return true;
 		case R.id.menu_help:
 			// startActivity(new Intent(MainActivity.this, HelpActivity.class));

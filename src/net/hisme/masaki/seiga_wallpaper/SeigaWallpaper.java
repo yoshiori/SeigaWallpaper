@@ -25,8 +25,8 @@ public class SeigaWallpaper extends Application {
 	 * @return clip id
 	 */
 	public int clip_id() {
-		return PreferenceManager.getDefaultSharedPreferences(this).getInt(
-				"clip_id", -1);
+		return Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
+				SeigaWallpaper.this).getString("clip_id", ""));
 	}
 
 	public ImageUrlList image_url_list() throws Exception {
