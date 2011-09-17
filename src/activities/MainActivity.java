@@ -1,5 +1,10 @@
-package net.hisme.masaki.seiga_wallpaper;
+package activities;
 
+import net.hisme.masaki.seiga_wallpaper.R;
+import net.hisme.masaki.seiga_wallpaper.SeigaWallpaper;
+import net.hisme.masaki.seiga_wallpaper.R.id;
+import net.hisme.masaki.seiga_wallpaper.R.layout;
+import net.hisme.masaki.seiga_wallpaper.R.menu;
 import net.hisme.masaki.seiga_wallpaper.seiga.Clip;
 import android.app.Activity;
 import android.content.Intent;

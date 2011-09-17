@@ -1,5 +1,7 @@
-package net.hisme.masaki.seiga_wallpaper;
+package activities;
 
+import net.hisme.masaki.seiga_wallpaper.R;
+import net.hisme.masaki.seiga_wallpaper.R.xml;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
