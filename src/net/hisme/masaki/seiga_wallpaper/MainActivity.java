@@ -4,6 +4,7 @@ import net.hisme.masaki.seiga_wallpaper.seiga.Clip;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -37,8 +38,7 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_config:
-			startActivity(new Intent(MainActivity.this,
-					ClipActivity.class));
+			startActivity(new Intent(MainActivity.this, ClipActivity.class));
 			return true;
 		case R.id.menu_reload:
 			try {
@@ -60,12 +60,22 @@ public class MainActivity extends Activity {
 	}
 
 	public void reload() {
-		try {
-			((ImageView) findViewById(R.id.image))
-					.setImageBitmap(SeigaWallpaper.instance().random_image());
-		} catch (Exception e) {
+		final Handler handler = new Handler();
+		new Thread() {
+			public void run() {
+				handler.post(new Runnable() {
+					public void run() {
+						try {
+							((ImageView) MainActivity.this
+									.findViewById(R.id.image))
+									.setImageBitmap(SeigaWallpaper.instance()
+											.random_image());
+						} catch (Exception e) {
 
-		}
-
+						}
+					}
+				});
+			}
+		}.start();
 	}
 }
