@@ -3,26 +3,31 @@ package net.hisme.masaki.seiga_wallpaper;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 public class SeigaWallpaperActivity extends Activity {
-	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		reload();
 
-		findViewById(R.id.get_html_button).setOnClickListener(
-				new View.OnClickListener() {
+		findViewById(R.id.image).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				reload();
+			}
+		});
 
-					@Override
-					public void onClick(View v) {
-						try {
-							Downloader
-									.download(304308);
-						} catch (Exception e) {
+	}
 
-						}
-					}
-				});
+	public void reload() {
+		try {
+			((ImageView) findViewById(R.id.image))
+					.setImageBitmap(SeigaWallpaper.instance().random_image());
+		} catch (Exception e) {
+
+		}
+
 	}
 }
