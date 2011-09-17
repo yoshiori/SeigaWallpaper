@@ -1,4 +1,4 @@
-package net.hisme.masaki.seiga_wallpaper;
+package net.hisme.masaki.seiga_wallpaper.seiga;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
+
+import net.hisme.masaki.seiga_wallpaper.HTTP_Client;
+import net.hisme.masaki.seiga_wallpaper.SeigaWallpaper;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -17,7 +20,7 @@ public class Clip {
 	protected List<String> image_urls;
 
 	/**
-	 * access to seiga clip
+	 * access to NicoSeiga clip
 	 * 
 	 * @throws Exception
 	 */

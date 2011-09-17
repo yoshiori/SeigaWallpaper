@@ -1,7 +1,10 @@
-package net.hisme.masaki.seiga_wallpaper;
+package net.hisme.masaki.seiga_wallpaper.seiga;
 
 import java.io.File;
 import java.io.OutputStream;
+
+import net.hisme.masaki.seiga_wallpaper.HTTP_Client;
+import net.hisme.masaki.seiga_wallpaper.SeigaWallpaper;
 
 import android.content.Context;
 import android.graphics.Bitmap;

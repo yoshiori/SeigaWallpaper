@@ -1,5 +1,7 @@
 package net.hisme.masaki.seiga_wallpaper;
 
+import net.hisme.masaki.seiga_wallpaper.seiga.Image;
+import net.hisme.masaki.seiga_wallpaper.seiga.ImageUrlList;
 import android.app.Application;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;

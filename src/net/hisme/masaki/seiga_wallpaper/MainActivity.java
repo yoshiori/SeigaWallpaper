@@ -1,5 +1,6 @@
 package net.hisme.masaki.seiga_wallpaper;
 
+import net.hisme.masaki.seiga_wallpaper.seiga.Clip;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.util.Log;
 
-public class SeigaWallpaperActivity extends Activity {
+public class MainActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,7 +37,7 @@ public class SeigaWallpaperActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_config:
-			startActivity(new Intent(SeigaWallpaperActivity.this,
+			startActivity(new Intent(MainActivity.this,
 					ClipActivity.class));
 			return true;
 		case R.id.menu_reload:
