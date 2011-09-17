@@ -5,7 +5,8 @@
 	<uses-sdk android:minSdkVersion="8" />
 	<uses-permission android:name="android.permission.INTERNET" />
 
-	<application android:icon="@drawable/icon" android:label="@string/app_name">
+	<application android:icon="@drawable/icon" android:label="@string/app_name"
+		android:name="net.hisme.masaki.seiga_wallpaper.SeigaWallpaper">
 		<activity android:name=".SeigaWallpaperActivity"
 			android:label="@string/app_name">
 			<intent-filter>
