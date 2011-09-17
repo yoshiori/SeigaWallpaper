@@ -21,10 +21,6 @@ public class Clip {
 		get_image_urls();
 	}
 
-	public List<String> image_urls() {
-		return this.image_urls;
-	}
-
 	private void get_image_urls() throws Exception {
 		String url = String.format("http://afternoon-snow-8621.heroku.com/%d",
 				this.clip_id);
@@ -38,5 +34,9 @@ public class Clip {
 		for (int i = 0; i < len; i++) {
 			image_urls.add(xpath.evaluate("./text()", nodes.item(i)));
 		}
+	}
+
+	public void save() throws Exception {
+		SeigaWallpaper.instance().image_url_list().save(image_urls);
 	}
 }
