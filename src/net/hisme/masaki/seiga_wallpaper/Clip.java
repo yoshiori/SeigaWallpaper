@@ -16,6 +16,13 @@ public class Clip {
 	protected int clip_id;
 	protected List<String> image_urls;
 
+	/**
+	 * access to seiga clip
+	 * 
+	 * @param id
+	 *            clip_id
+	 * @throws Exception
+	 */
 	public Clip(int id) throws Exception {
 		image_urls = new ArrayList<String>();
 		get_image_urls();
@@ -36,6 +43,11 @@ public class Clip {
 		}
 	}
 
+	/**
+	 * store urls
+	 * 
+	 * @throws Exception
+	 */
 	public void save() throws Exception {
 		SeigaWallpaper.instance().image_url_list().save(image_urls);
 	}

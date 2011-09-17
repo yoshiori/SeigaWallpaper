@@ -7,6 +7,13 @@ import java.net.URL;
 
 public class HTTP_Client {
 
+	/**
+	 * GET url and return response as String
+	 * 
+	 * @param url
+	 * @return response as String
+	 * @throws Exception
+	 */
 	public static String get(String url) throws Exception {
 		StringBuffer buf = new StringBuffer();
 		String line = null;
@@ -18,8 +25,14 @@ public class HTTP_Client {
 		return buf.toString();
 	}
 
+	/**
+	 * GET url and return response as InputStrem
+	 * 
+	 * @param url
+	 * @return response as InputStream
+	 * @throws Exception
+	 */
 	public static InputStream get_stream(String url) throws Exception {
 		return new URL(url).openConnection().getInputStream();
 	}
-
 }

@@ -12,10 +12,17 @@ public class SeigaWallpaper extends Application {
 		SeigaWallpaper.self = SeigaWallpaper.this;
 	}
 
+	/**
+	 * @return instance of Application
+	 * @throws Exception
+	 */
 	public static SeigaWallpaper instance() throws Exception {
 		return self;
 	}
 
+	/**
+	 * @return clip id
+	 */
 	public int clip_id() {
 		return getSharedPreferences("seiga_clip", Application.MODE_PRIVATE)
 				.getInt("id", 0);
@@ -28,6 +35,10 @@ public class SeigaWallpaper extends Application {
 		return image_url_list;
 	}
 
+	/**
+	 * @return Bitmap of random image
+	 * @throws Exception
+	 */
 	public Bitmap random_image() throws Exception {
 		return new Image(image_url_list().random()).bitmap();
 	}
