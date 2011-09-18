@@ -3,6 +3,7 @@ package net.hisme.masaki.seiga_wallpaper;
 import net.hisme.masaki.seiga_wallpaper.seiga.Image;
 import net.hisme.masaki.seiga_wallpaper.seiga.ImageUrlList;
 import net.hisme.masaki.seiga_wallpaper.services.ClipUpdater;
+import net.hisme.masaki.seiga_wallpaper.services.WallUpdater;
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.PendingIntent;
@@ -13,11 +14,30 @@ import android.preference.PreferenceManager;
 public class SeigaWallpaper extends Application {
 	protected static SeigaWallpaper self;
 	private ImageUrlList image_url_list;
-	private PendingIntent clip_update_task;	
+	private PendingIntent clip_update_task;
+	private PendingIntent wall_update_task;
 
 	public SeigaWallpaper() {
 		super();
 		SeigaWallpaper.self = SeigaWallpaper.this;
+	}
+
+	public void start_wall_update_task() {
+		AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
+		if (wall_update_task == null) {
+			wall_update_task = PendingIntent.getService(SeigaWallpaper.this, 0,
+					new Intent(SeigaWallpaper.this, WallUpdater.class), 0);
+		}
+		alarm.setRepeating(AlarmManager.RTC_WAKEUP, 0, (long) 3 * 60 * 1000,
+				wall_update_task);
+
+	}
+
+	public void stop_wall_update_task() {
+		AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
+		if (clip_update_task != null) {
+			alarm.cancel(wall_update_task);
+		}
 	}
 
 	public void start_clip_update_task() {
