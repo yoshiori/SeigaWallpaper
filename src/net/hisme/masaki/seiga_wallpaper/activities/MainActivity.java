@@ -44,10 +44,10 @@ public class MainActivity extends Activity {
 			return true;
 		case R.id.menu_reload:
 			try {
-				new Clip().save();
+				SeigaWallpaper.instance().start_clip_update_task();
 			} catch (Exception e) {
-				Log.d("SeigaWallpaper", String.format("Exception: %s", e
-						.getMessage()));
+				SeigaWallpaper.Log.d(String.format(
+						"Exception in menu_reload(): %s", e.getMessage()));
 			}
 			return true;
 		case R.id.menu_help:
