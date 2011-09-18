@@ -2,7 +2,6 @@ package net.hisme.masaki.seiga_wallpaper.activities;
 
 import net.hisme.masaki.seiga_wallpaper.R;
 import net.hisme.masaki.seiga_wallpaper.SeigaWallpaper;
-import net.hisme.masaki.seiga_wallpaper.seiga.Clip;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.util.Log;
 
 public class MainActivity extends Activity {
 	@Override
@@ -73,7 +71,8 @@ public class MainActivity extends Activity {
 									.setImageBitmap(SeigaWallpaper.instance()
 											.random_image());
 						} catch (Exception e) {
-
+							SeigaWallpaper.Log.d(String.format(
+									"Exception in reload: %s", e.getMessage()));
 						}
 					}
 				});
