@@ -28,14 +28,15 @@ public class SeigaWallpaper extends Application {
 			wall_update_task = PendingIntent.getService(SeigaWallpaper.this, 0,
 					new Intent(SeigaWallpaper.this, WallUpdater.class), 0);
 		}
+		Log.d("enable to update wallpaper");
 		alarm.setRepeating(AlarmManager.RTC_WAKEUP, 0, (long) 3 * 60 * 1000,
 				wall_update_task);
-
 	}
 
 	public void stop_wall_update_task() {
 		AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
-		if (clip_update_task != null) {
+		if (wall_update_task != null) {
+			Log.d("disable to update wallpaper");
 			alarm.cancel(wall_update_task);
 		}
 	}
@@ -46,8 +47,8 @@ public class SeigaWallpaper extends Application {
 			clip_update_task = PendingIntent.getService(SeigaWallpaper.this, 0,
 					new Intent(SeigaWallpaper.this, ClipUpdater.class), 0);
 		}
-		alarm.setRepeating(AlarmManager.RTC_WAKEUP, 0, (long) 3 * 60 * 1000,
-				clip_update_task);
+		alarm.setRepeating(AlarmManager.RTC_WAKEUP, 0,
+				(long) 8 * 60 * 60 * 1000, clip_update_task);
 	}
 
 	/**
