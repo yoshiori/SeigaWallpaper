@@ -15,7 +15,8 @@ public class SettingActivity extends PreferenceActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.pref);
-
+		getPreferenceScreen().findPreference("clip_id").setSummary(
+				App.li.raw_clip_id());
 		getPreferenceScreen().findPreference("clip_id")
 				.setOnPreferenceChangeListener(
 						new Preference.OnPreferenceChangeListener() {
@@ -39,6 +40,9 @@ public class SettingActivity extends PreferenceActivity {
 					final App app = App.li;
 
 					if (key.compareTo("clip_id") == 0) {
+						SettingActivity.this.getPreferenceScreen()
+								.findPreference(key).setSummary(
+										sharedPreferences.getString(key, ""));
 						app.start_clip_update_task();
 					}
 					if (key.compareTo("enable_change_wallpaper") == 0) {
