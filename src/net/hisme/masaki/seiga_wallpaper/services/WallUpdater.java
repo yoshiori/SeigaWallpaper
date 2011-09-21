@@ -1,6 +1,6 @@
 package net.hisme.masaki.seiga_wallpaper.services;
 
-import net.hisme.masaki.seiga_wallpaper.SeigaWallpaper;
+import net.hisme.masaki.seiga_wallpaper.App;
 import android.app.Service;
 import android.app.WallpaperManager;
 import android.content.Intent;
@@ -15,13 +15,13 @@ public class WallUpdater extends Service {
 
 	@Override
 	public void onCreate() {
-		SeigaWallpaper.Log.d("WallUpdater.start");
+		App.Log.d("WallUpdater.start");
 		try {
 			WallpaperManager.getInstance(WallUpdater.this).setBitmap(
-					SeigaWallpaper.instance().random_image());
+					App.li.random_image());
 		} catch (Exception e) {
-			SeigaWallpaper.Log.d(String.format("Exception in wall updater: %s",
-					e.getMessage()));
+			App.Log.d(String.format("Exception in wall updater: %s", e
+					.getMessage()));
 		}
 		stopSelf();
 	}

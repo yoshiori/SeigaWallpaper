@@ -12,25 +12,25 @@ import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-public class SeigaWallpaper extends Application {
-	protected static SeigaWallpaper self;
+public class App extends Application {
+	public static App li;
 	private ImageUrlList image_url_list;
 	private PendingIntent clip_update_task;
 	private PendingIntent wall_update_task;
 
-	public SeigaWallpaper() {
+	public App() {
 		super();
-		SeigaWallpaper.self = SeigaWallpaper.this;
+		App.li = App.this;
 	}
 
 	public void start_wall_update_task() {
 		AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
 		if (wall_update_task == null) {
-			wall_update_task = PendingIntent.getService(SeigaWallpaper.this, 0,
-					new Intent(SeigaWallpaper.this, WallUpdater.class), 0);
+			wall_update_task = PendingIntent.getService(App.this, 0,
+					new Intent(App.this, WallUpdater.class), 0);
 		}
 		Log.d("enable to update wallpaper");
-		alarm.setRepeating(AlarmManager.RTC_WAKEUP, 0, (long) 3 * 60 * 1000,
+		alarm.setRepeating(AlarmManager.RTC_WAKEUP, 0, (long) 5 * 1000,
 				wall_update_task);
 	}
 
@@ -49,8 +49,8 @@ public class SeigaWallpaper extends Application {
 		check_clip_id();
 
 		if (clip_update_task == null) {
-			clip_update_task = PendingIntent.getService(SeigaWallpaper.this, 0,
-					new Intent(SeigaWallpaper.this, ClipUpdater.class), 0);
+			clip_update_task = PendingIntent.getService(App.this, 0,
+					new Intent(App.this, ClipUpdater.class), 0);
 		}
 		alarm.setRepeating(AlarmManager.RTC_WAKEUP, 0,
 				(long) 8 * 60 * 60 * 1000, clip_update_task);
@@ -64,16 +64,9 @@ public class SeigaWallpaper extends Application {
 		}
 	}
 
-	/**
-	 * @return instance of Application
-	 */
-	public static SeigaWallpaper instance() {
-		return self;
-	}
-
 	public String raw_clip_id() {
-		return PreferenceManager.getDefaultSharedPreferences(
-				SeigaWallpaper.this).getString("clip_id", "");
+		return PreferenceManager.getDefaultSharedPreferences(App.this)
+				.getString("clip_id", "");
 	}
 
 	/**
@@ -108,7 +101,7 @@ public class SeigaWallpaper extends Application {
 	}
 
 	public void toast(int res_id, int duration) {
-		Toast.makeText(SeigaWallpaper.this, res_id, duration).show();
+		Toast.makeText(App.this, res_id, duration).show();
 	}
 
 	/**
@@ -144,8 +137,7 @@ public class SeigaWallpaper extends Application {
 
 		@Override
 		public String getMessage() {
-			return String.format("Invalid ClipID: '%s'", SeigaWallpaper
-					.instance().raw_clip_id());
+			return String.format("Invalid ClipID: '%s'", App.li.raw_clip_id());
 		}
 	}
 }

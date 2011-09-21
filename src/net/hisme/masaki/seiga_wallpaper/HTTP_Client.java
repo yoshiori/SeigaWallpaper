@@ -30,7 +30,7 @@ public class HTTP_Client {
 		} catch (MalformedURLException e) {
 			throw e;
 		} catch (IOException e) {
-			SeigaWallpaper.Log.d("Read Error:" + url);
+			App.Log.d("Read Error:" + url);
 			throw new ConnectionError();
 		}
 	}
@@ -48,10 +48,10 @@ public class HTTP_Client {
 		try {
 			return new URL(url).openConnection().getInputStream();
 		} catch (MalformedURLException e) {
-			SeigaWallpaper.Log.e("Malformed Url: " + url);
+			App.Log.e("Malformed Url: " + url);
 			throw e;
 		} catch (IOException e) {
-			SeigaWallpaper.Log.d("Connection Error: " + url);
+			App.Log.d("Connection Error: " + url);
 			throw new ConnectionError();
 		}
 

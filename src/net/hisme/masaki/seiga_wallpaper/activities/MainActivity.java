@@ -1,7 +1,7 @@
 package net.hisme.masaki.seiga_wallpaper.activities;
 
 import net.hisme.masaki.seiga_wallpaper.R;
-import net.hisme.masaki.seiga_wallpaper.SeigaWallpaper;
+import net.hisme.masaki.seiga_wallpaper.App;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -42,12 +42,12 @@ public class MainActivity extends Activity {
 			return true;
 		case R.id.menu_reload:
 			try {
-				SeigaWallpaper.instance().start_clip_update_task();
-			} catch (SeigaWallpaper.InvalidClipId e) {
-				SeigaWallpaper.instance().toast(R.string.invalid_clip_id_error);
+				App.li.start_clip_update_task();
+			} catch (App.InvalidClipId e) {
+				App.li.toast(R.string.invalid_clip_id_error);
 			} catch (Exception e) {
-				SeigaWallpaper.Log.d(String.format(
-						"Exception in menu_reload(): %s", e.getMessage()));
+				App.Log.d(String.format("Exception in menu_reload(): %s", e
+						.getMessage()));
 			}
 			return true;
 		case R.id.menu_help:
@@ -70,11 +70,10 @@ public class MainActivity extends Activity {
 						try {
 							((ImageView) MainActivity.this
 									.findViewById(R.id.image))
-									.setImageBitmap(SeigaWallpaper.instance()
-											.random_image());
+									.setImageBitmap(App.li.random_image());
 						} catch (Exception e) {
-							SeigaWallpaper.Log.d(String.format(
-									"Exception in reload: %s", e.getMessage()));
+							App.Log.d(String.format("Exception in reload: %s",
+									e.getMessage()));
 						}
 					}
 				});

@@ -1,7 +1,7 @@
 package net.hisme.masaki.seiga_wallpaper.activities;
 
 import net.hisme.masaki.seiga_wallpaper.R;
-import net.hisme.masaki.seiga_wallpaper.SeigaWallpaper;
+import net.hisme.masaki.seiga_wallpaper.App;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -25,8 +25,7 @@ public class SettingActivity extends PreferenceActivity {
 								if (newValue.toString().matches("[1-9]\\d*"))
 									return true;
 
-								SeigaWallpaper.instance().toast(
-										R.string.invalid_clip_id_error);
+								App.li.toast(R.string.invalid_clip_id_error);
 								return false;
 							}
 						});
@@ -37,7 +36,7 @@ public class SettingActivity extends PreferenceActivity {
 					SharedPreferences sharedPreferences, String key) {
 
 				try {
-					final SeigaWallpaper app = SeigaWallpaper.instance();
+					final App app = App.li;
 
 					if (key.compareTo("clip_id") == 0) {
 						app.start_clip_update_task();
@@ -50,8 +49,7 @@ public class SettingActivity extends PreferenceActivity {
 						}
 					}
 				} catch (Exception e) {
-					SeigaWallpaper.Log.d("Exception in preference: "
-							+ e.getMessage());
+					App.Log.d("Exception in preference: " + e.getMessage());
 				}
 			}
 		};

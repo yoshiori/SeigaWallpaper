@@ -7,7 +7,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.hisme.masaki.seiga_wallpaper.SeigaWallpaper;
+import net.hisme.masaki.seiga_wallpaper.App;
 
 import android.content.Context;
 
@@ -27,8 +27,8 @@ public class ImageUrlList {
 	private void load() throws Exception {
 		images = new ArrayList<String>();
 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				SeigaWallpaper.instance().openFileInput(ImageUrlList.url_file)));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(App.li
+				.openFileInput(ImageUrlList.url_file)));
 		String line = null;
 		while ((line = reader.readLine()) != null) {
 			images.add(line);
@@ -38,7 +38,7 @@ public class ImageUrlList {
 	public void save(List<String> images) throws Exception {
 		this.images = images;
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
-				SeigaWallpaper.instance().openFileOutput(ImageUrlList.url_file,
+				App.li.openFileOutput(ImageUrlList.url_file,
 						Context.MODE_PRIVATE)));
 		for (String url : images) {
 			writer.write(url);

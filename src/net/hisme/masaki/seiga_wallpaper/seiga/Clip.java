@@ -9,7 +9,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 
 import net.hisme.masaki.seiga_wallpaper.HTTP_Client;
-import net.hisme.masaki.seiga_wallpaper.SeigaWallpaper;
+import net.hisme.masaki.seiga_wallpaper.App;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -31,7 +31,7 @@ public class Clip {
 
 	private void get_image_urls() throws Exception {
 		String url = String.format("http://afternoon-snow-8621.heroku.com/%d",
-				SeigaWallpaper.instance().clip_id());
+				App.li.clip_id());
 		Document document = DocumentBuilderFactory.newInstance()
 				.newDocumentBuilder().parse(HTTP_Client.get_stream(url));
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -49,6 +49,6 @@ public class Clip {
 	 * @throws Exception
 	 */
 	public void save() throws Exception {
-		SeigaWallpaper.instance().image_url_list().save(image_urls);
+		App.li.image_url_list().save(image_urls);
 	}
 }
