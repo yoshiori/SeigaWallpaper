@@ -4,9 +4,10 @@ import net.hisme.masaki.seiga_wallpaper.R;
 import net.hisme.masaki.seiga_wallpaper.SeigaWallpaper;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
 
-public class ClipActivity extends PreferenceActivity {
+public class SettingActivity extends PreferenceActivity {
 
 	private SharedPreferences.OnSharedPreferenceChangeListener listener;
 
@@ -15,12 +16,25 @@ public class ClipActivity extends PreferenceActivity {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.pref);
 
+		getPreferenceScreen().findPreference("clip_id")
+				.setOnPreferenceChangeListener(
+						new Preference.OnPreferenceChangeListener() {
+							@Override
+							public boolean onPreferenceChange(
+									Preference preference, Object newValue) {
+								if (newValue.toString().matches("[1-9]\\d*"))
+									return true;
+
+								SeigaWallpaper.instance().toast(
+										R.string.invalid_clip_id_error);
+								return false;
+							}
+						});
+
 		listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
 			@Override
 			public void onSharedPreferenceChanged(
 					SharedPreferences sharedPreferences, String key) {
-				SeigaWallpaper.Log.d(String
-						.format("update preference: %s", key));
 
 				try {
 					final SeigaWallpaper app = SeigaWallpaper.instance();
@@ -55,5 +69,4 @@ public class ClipActivity extends PreferenceActivity {
 		getPreferenceScreen().getSharedPreferences()
 				.unregisterOnSharedPreferenceChangeListener(listener);
 	}
-
 }

@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_config:
-			startActivity(new Intent(MainActivity.this, ClipActivity.class));
+			startActivity(new Intent(MainActivity.this, SettingActivity.class));
 			return true;
 		case R.id.menu_reload:
 			try {
