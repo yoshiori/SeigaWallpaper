@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="invalid_clip_id_error">Invalid Clip ID</string>
+  <string name="invalid_clip_id_error">Invalid Clip ID</string>
 </resources>

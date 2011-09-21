@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <string name="title_of_id">ID</string>
+  <string name="title_of_enable_change_wallpaper">Change Wallpaper</string>
+</resources>

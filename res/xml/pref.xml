@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<PreferenceCategory android:title="Clip"
-		android:summary="clip">
-		<EditTextPreference android:key="clip_id"
-			android:title="ID" android:summary="clip_id" android:minHeight="24px" />
-		<CheckBoxPreference android:key="enable_change_wallpaper"
-			android:title="Change Wallpaper" android:summary="enable change wallpaper?" />
-	</PreferenceCategory>
+  <PreferenceCategory android:title="Clip"
+    android:summary="clip">
+    <EditTextPreference android:key="clip_id"
+      android:title="@string/title_of_id" android:summary=""
+      android:minHeight="24px" />
+    <CheckBoxPreference android:key="enable_change_wallpaper"
+      android:title="@string/title_of_enable_change_wallpaper"
+      android:summary="enable change wallpaper?" />
+  </PreferenceCategory>
 </PreferenceScreen>
