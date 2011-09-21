@@ -30,7 +30,7 @@ public class App extends Application {
 					new Intent(App.this, WallUpdater.class), 0);
 		}
 		Log.d("enable to update wallpaper");
-		alarm.setRepeating(AlarmManager.RTC_WAKEUP, 0, (long) 5 * 1000,
+		alarm.setRepeating(AlarmManager.RTC_WAKEUP, 0, (long) 5 * 60 * 1000,
 				wall_update_task);
 	}
 
