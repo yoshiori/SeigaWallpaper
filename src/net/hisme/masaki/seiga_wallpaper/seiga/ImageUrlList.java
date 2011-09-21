@@ -2,6 +2,8 @@ package net.hisme.masaki.seiga_wallpaper.seiga;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ public class ImageUrlList {
 	private static final String url_file = "image_urls.txt";
 	private List<String> images;
 
-	public ImageUrlList() throws Exception {
+	public ImageUrlList() throws IOException {
 		this.images = new ArrayList<String>();
 		load();
 	}
@@ -24,26 +26,34 @@ public class ImageUrlList {
 		return images.get((int) Math.ceil(Math.random() * images.size()));
 	}
 
-	private void load() throws Exception {
+	private void load() throws IOException {
 		images = new ArrayList<String>();
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					App.li.openFileInput(ImageUrlList.url_file)));
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				images.add(line);
+			}
+		} catch (FileNotFoundException e) {
 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(App.li
-				.openFileInput(ImageUrlList.url_file)));
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			images.add(line);
 		}
 	}
 
-	public void save(List<String> images) throws Exception {
+	public void save(List<String> images) throws IOException {
 		this.images = images;
-		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
-				App.li.openFileOutput(ImageUrlList.url_file,
-						Context.MODE_PRIVATE)));
-		for (String url : images) {
-			writer.write(url);
-			writer.newLine();
+		try {
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
+					App.li.openFileOutput(ImageUrlList.url_file,
+							Context.MODE_PRIVATE)));
+
+			for (String url : images) {
+				writer.write(url);
+				writer.newLine();
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			App.Log.d("FileNotFound: " + ImageUrlList.url_file);
 		}
-		writer.close();
 	}
 }
