@@ -34,15 +34,19 @@ public class SeigaWallpaper extends Application {
 	}
 
 	public void stop_wall_update_task() {
-		AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
 		if (wall_update_task != null) {
+			AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
 			Log.d("disable to update wallpaper");
 			alarm.cancel(wall_update_task);
 		}
 	}
 
 	public void start_clip_update_task() {
+		stop_clip_update_task();
 		AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+		check_clip_id();
+
 		if (clip_update_task == null) {
 			clip_update_task = PendingIntent.getService(SeigaWallpaper.this, 0,
 					new Intent(SeigaWallpaper.this, ClipUpdater.class), 0);
@@ -51,20 +55,44 @@ public class SeigaWallpaper extends Application {
 				(long) 8 * 60 * 60 * 1000, clip_update_task);
 	}
 
+	public void stop_clip_update_task() {
+		if (clip_update_task != null) {
+			AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
+			Log.d("disable to update clip");
+			alarm.cancel(clip_update_task);
+		}
+	}
+
 	/**
 	 * @return instance of Application
-	 * @throws Exception
 	 */
-	public static SeigaWallpaper instance() throws Exception {
+	public static SeigaWallpaper instance() {
 		return self;
+	}
+
+	public String raw_clip_id() {
+		return PreferenceManager.getDefaultSharedPreferences(
+				SeigaWallpaper.this).getString("clip_id", "");
 	}
 
 	/**
 	 * @return clip id
 	 */
 	public int clip_id() {
-		return Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
-				SeigaWallpaper.this).getString("clip_id", ""));
+		try {
+			int clip_id = Integer.parseInt(raw_clip_id());
+			if (clip_id <= 0)
+				throw new InvalidClipId();
+
+			return clip_id;
+		} catch (Exception e) {
+			throw new InvalidClipId();
+		}
+	}
+
+	public boolean check_clip_id() {
+		clip_id();
+		return true;
 	}
 
 	public ImageUrlList image_url_list() throws Exception {
@@ -99,6 +127,16 @@ public class SeigaWallpaper extends Application {
 
 		public static void w(String str) {
 			android.util.Log.w(tag, str);
+		}
+	}
+
+	public static class InvalidClipId extends RuntimeException {
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public String getMessage() {
+			return String.format("Invalid ClipID: '%s'", SeigaWallpaper
+					.instance().raw_clip_id());
 		}
 	}
 }
