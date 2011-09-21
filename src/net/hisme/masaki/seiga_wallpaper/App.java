@@ -89,6 +89,19 @@ public class App extends Application {
 		return true;
 	}
 
+	public boolean clip_id_is_valid() {
+		try {
+			return check_clip_id();
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public boolean change_wallpaper_enabled() {
+		return PreferenceManager.getDefaultSharedPreferences(App.this)
+				.getBoolean("enable_change_wallpaper", false);
+	}
+
 	public ImageUrlList image_url_list() throws Exception {
 		if (image_url_list == null) {
 			this.image_url_list = new ImageUrlList();
