@@ -10,6 +10,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 public class SeigaWallpaper extends Application {
 	protected static SeigaWallpaper self;
@@ -100,6 +101,14 @@ public class SeigaWallpaper extends Application {
 			this.image_url_list = new ImageUrlList();
 		}
 		return image_url_list;
+	}
+
+	public void toast(int res_id) {
+		toast(res_id, Toast.LENGTH_SHORT);
+	}
+
+	public void toast(int res_id, int duration) {
+		Toast.makeText(SeigaWallpaper.this, res_id, duration).show();
 	}
 
 	/**

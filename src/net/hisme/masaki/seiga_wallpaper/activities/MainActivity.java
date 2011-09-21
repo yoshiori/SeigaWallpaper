@@ -43,6 +43,8 @@ public class MainActivity extends Activity {
 		case R.id.menu_reload:
 			try {
 				SeigaWallpaper.instance().start_clip_update_task();
+			} catch (SeigaWallpaper.InvalidClipId e) {
+				SeigaWallpaper.instance().toast(R.string.invalid_clip_id_error);
 			} catch (Exception e) {
 				SeigaWallpaper.Log.d(String.format(
 						"Exception in menu_reload(): %s", e.getMessage()));
