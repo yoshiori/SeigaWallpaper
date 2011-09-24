@@ -4,6 +4,7 @@ import net.hisme.masaki.seiga_wallpaper.R;
 import net.hisme.masaki.seiga_wallpaper.App;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -51,11 +52,14 @@ public class MainActivity extends Activity {
 			}
 			return true;
 		case R.id.menu_help:
-			// startActivity(new Intent(MainActivity.this, HelpActivity.class));
+			startActivity(new Intent(Intent.ACTION_VIEW, Uri
+					.parse(getString(R.string.api_url)
+							+ getString(R.string.help_url))));
 			return true;
 		case R.id.menu_about:
-			// startActivity(new Intent(MainActivity.this,
-			// AboutActivity.class));
+			startActivity(new Intent(Intent.ACTION_VIEW, Uri
+					.parse(getString(R.string.api_url)
+							+ getString(R.string.about_url))));
 			return true;
 		}
 		return false;

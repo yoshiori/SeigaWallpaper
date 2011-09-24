@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>  
+  <string name="about_url">/about</string>
+  <string name="help_url">/help</string>
+</resources>

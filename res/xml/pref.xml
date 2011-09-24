@@ -7,6 +7,6 @@
       android:minHeight="24px" />
     <CheckBoxPreference android:key="enable_change_wallpaper"
       android:title="@string/title_of_enable_change_wallpaper"
-      android:summary="enable change wallpaper?" />
+      android:summary="" />
   </PreferenceCategory>
 </PreferenceScreen>
