@@ -23,7 +23,7 @@ public class ImageUrlList {
 	}
 
 	public String random() {
-		return images.get((int) Math.ceil(Math.random() * images.size()));
+		return images.get((int) Math.floor(Math.random() * images.size()));
 	}
 
 	private void load() throws IOException {
