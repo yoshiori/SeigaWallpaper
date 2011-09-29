@@ -3,7 +3,7 @@
   <string name="app_name">ニコ壁</string>
   <string name="menu_reload">クリップ更新</string>
   <string name="menu_config">設定</string>
-  <string name="menu_about">情報</string>
+  <string name="menu_info">インフォ</string>
   <string name="menu_help">ヘルプ</string>
   <string name="startup">クリップIDが設定されてないよ! メニューボタン > 設定 で設定してね!</string>
 </resources>

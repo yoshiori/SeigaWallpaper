@@ -3,7 +3,7 @@
   <string name="app_name">NicoWall</string>
   <string name="menu_reload">Sync Clip</string>
   <string name="menu_config">Settings</string>
-  <string name="menu_about">About</string>
+  <string name="menu_info">Info</string>
   <string name="menu_help">Help</string>
   <string name="startup">Clip ID is not given,
     press Menu Button > Settings
