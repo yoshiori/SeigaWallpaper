@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <string name="title_of_id">ID</string>
+  <string name="setting_title">ニコ壁 設定</string>
+  <string name="title_of_id">クリップID</string>
   <string name="title_of_enable_change_wallpaper">壁紙を変更する</string>
 </resources>

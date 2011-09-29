@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">ニコ壁</string>
-  <string name="menu_reload">Reload</string>
-  <string name="menu_config">Config</string>
-  <string name="menu_about">About</string>
-  <string name="menu_help">Help</string>
+  <string name="menu_reload">クリップ更新</string>
+  <string name="menu_config">設定</string>
+  <string name="menu_about">情報</string>
+  <string name="menu_help">ヘルプ</string>
 </resources>
