@@ -26,6 +26,10 @@ public class MainActivity extends Activity {
 				reload();
 			}
 		});
+
+		if (!App.li.clip_id_is_valid()) {
+			App.li.toast(R.string.startup);
+		}
 	}
 
 	@Override

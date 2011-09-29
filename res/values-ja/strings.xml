@@ -5,4 +5,5 @@
   <string name="menu_config">設定</string>
   <string name="menu_about">情報</string>
   <string name="menu_help">ヘルプ</string>
+  <string name="startup">クリップIDが設定されてないよ! メニューボタン > 設定 で設定してね!</string>
 </resources>

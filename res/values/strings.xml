@@ -5,5 +5,10 @@
   <string name="menu_config">Settings</string>
   <string name="menu_about">About</string>
   <string name="menu_help">Help</string>
-  <string name="api_url">http://afternoon-snow-8621.heroku.com</string>
+  <string name="startup">Clip ID is not given,
+    press Menu Button > Settings
+    for settings.
+   </string>
+  <string name="api_url">
+    http://afternoon-snow-8621.heroku.com</string>
 </resources>
