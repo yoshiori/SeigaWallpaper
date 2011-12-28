@@ -11,8 +11,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.hisme.masaki.seiga_wallpaper.App;
-
+import net.hisme.masaki.seiga_wallpaper.Log;
 import android.content.Context;
 
 public class ImageUrlList {
@@ -55,7 +54,7 @@ public class ImageUrlList {
 			}
 			writer.close();
 		} catch (FileNotFoundException e) {
-			App.Log.d("FileNotFound: " + ImageUrlList.url_file);
+			Log.d("FileNotFound: " + ImageUrlList.url_file);
 		}
 	}
 }

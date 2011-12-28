@@ -1,9 +1,8 @@
 package net.hisme.masaki.seiga_wallpaper.activities;
 
 import static net.hisme.masaki.seiga_wallpaper.App.APP;
-
+import net.hisme.masaki.seiga_wallpaper.Log;
 import net.hisme.masaki.seiga_wallpaper.R;
-import net.hisme.masaki.seiga_wallpaper.App;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -53,7 +52,7 @@ public class SettingActivity extends PreferenceActivity {
 						}
 					}
 				} catch (Exception e) {
-					App.Log.d("Exception in preference: " + e.getMessage());
+					Log.d("Exception in preference: " + e.getMessage());
 				}
 			}
 		};

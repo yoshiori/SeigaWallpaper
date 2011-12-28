@@ -30,7 +30,7 @@ public class HTTPClient {
 		} catch (MalformedURLException e) {
 			throw e;
 		} catch (IOException e) {
-			App.Log.d("Read Error:" + url);
+			Log.d("Read Error:" + url);
 			throw new ConnectionError();
 		}
 	}
@@ -48,10 +48,10 @@ public class HTTPClient {
 		try {
 			return new URL(url).openConnection().getInputStream();
 		} catch (MalformedURLException e) {
-			App.Log.e("Malformed Url: " + url);
+			Log.e("Malformed Url: " + url);
 			throw e;
 		} catch (IOException e) {
-			App.Log.d("Connection Error: " + url);
+			Log.d("Connection Error: " + url);
 			throw new ConnectionError();
 		}
 

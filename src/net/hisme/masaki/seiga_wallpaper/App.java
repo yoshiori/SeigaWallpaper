@@ -76,11 +76,11 @@ public class App extends Application {
 		try {
 			int clip_id = Integer.parseInt(rawClipId());
 			if (clip_id <= 0)
-				throw new InvalidClipId();
+				throw new InvalidClipIdException();
 
 			return clip_id;
 		} catch (Exception e) {
-			throw new InvalidClipId();
+			throw new InvalidClipIdException();
 		}
 	}
 
@@ -123,34 +123,5 @@ public class App extends Application {
 	 */
 	public Bitmap randomImage() throws Exception {
 		return new Image(imageUrlList().random()).bitmap();
-	}
-
-	public static class Log {
-		private static final String tag = "SeigaWallpaper";
-
-		public static void i(String str) {
-			android.util.Log.i(tag, str);
-		}
-
-		public static void d(String str) {
-			android.util.Log.d(tag, str);
-		}
-
-		public static void e(String str) {
-			android.util.Log.e(tag, str);
-		}
-
-		public static void w(String str) {
-			android.util.Log.w(tag, str);
-		}
-	}
-
-	public static class InvalidClipId extends RuntimeException {
-		private static final long serialVersionUID = 1L;
-
-		@Override
-		public String getMessage() {
-			return String.format("Invalid ClipID: '%s'", APP.rawClipId());
-		}
 	}
 }

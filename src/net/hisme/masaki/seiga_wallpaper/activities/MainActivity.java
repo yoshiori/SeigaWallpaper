@@ -1,9 +1,9 @@
 package net.hisme.masaki.seiga_wallpaper.activities;
 
 import static net.hisme.masaki.seiga_wallpaper.App.APP;
-
+import net.hisme.masaki.seiga_wallpaper.InvalidClipIdException;
+import net.hisme.masaki.seiga_wallpaper.Log;
 import net.hisme.masaki.seiga_wallpaper.R;
-import net.hisme.masaki.seiga_wallpaper.App;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -50,10 +50,10 @@ public class MainActivity extends Activity {
 		case R.id.menu_reload:
 			try {
 				APP.startClipUpdateTask();
-			} catch (App.InvalidClipId e) {
+			} catch (InvalidClipIdException e) {
 				APP.toast(R.string.invalid_clip_id_error);
 			} catch (Exception e) {
-				App.Log.d(String.format("Exception in menu_reload(): %s", e
+				Log.d(String.format("Exception in menu_reload(): %s", e
 						.getMessage()));
 			}
 			return true;
@@ -82,7 +82,7 @@ public class MainActivity extends Activity {
 									.findViewById(R.id.image))
 									.setImageBitmap(APP.randomImage());
 						} catch (Exception e) {
-							App.Log.d(String.format("Exception in reload: %s",
+							Log.d(String.format("Exception in reload: %s",
 									e.getMessage()));
 						}
 					}
