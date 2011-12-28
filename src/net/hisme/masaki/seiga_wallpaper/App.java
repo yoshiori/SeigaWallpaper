@@ -13,14 +13,14 @@ import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 public class App extends Application {
-	public static App li;
+	public static App APP;
 	private ImageUrlList image_url_list;
 	private PendingIntent clip_update_task;
 	private PendingIntent wall_update_task;
 
 	public App() {
 		super();
-		App.li = App.this;
+		App.APP = App.this;
 	}
 
 	public void startWallUpdateTask() {
@@ -150,7 +150,7 @@ public class App extends Application {
 
 		@Override
 		public String getMessage() {
-			return String.format("Invalid ClipID: '%s'", App.li.rawClipId());
+			return String.format("Invalid ClipID: '%s'", APP.rawClipId());
 		}
 	}
 }

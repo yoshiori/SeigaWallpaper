@@ -1,5 +1,7 @@
 package net.hisme.masaki.seiga_wallpaper.activities;
 
+import static net.hisme.masaki.seiga_wallpaper.App.APP;
+
 import net.hisme.masaki.seiga_wallpaper.R;
 import net.hisme.masaki.seiga_wallpaper.App;
 import android.content.SharedPreferences;
@@ -16,7 +18,7 @@ public class SettingActivity extends PreferenceActivity {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.pref);
 		getPreferenceScreen().findPreference("clip_id").setSummary(
-				App.li.rawClipId());
+				APP.rawClipId());
 		getPreferenceScreen().findPreference("clip_id")
 				.setOnPreferenceChangeListener(
 						new Preference.OnPreferenceChangeListener() {
@@ -26,7 +28,7 @@ public class SettingActivity extends PreferenceActivity {
 								if (newValue.toString().matches("[1-9]\\d*"))
 									return true;
 
-								App.li.toast(R.string.invalid_clip_id_error);
+								APP.toast(R.string.invalid_clip_id_error);
 								return false;
 							}
 						});
@@ -37,19 +39,17 @@ public class SettingActivity extends PreferenceActivity {
 					SharedPreferences sharedPreferences, String key) {
 
 				try {
-					final App app = App.li;
-
 					if (key.compareTo("clip_id") == 0) {
 						SettingActivity.this.getPreferenceScreen()
 								.findPreference(key).setSummary(
 										sharedPreferences.getString(key, ""));
-						app.startClipUpdateTask();
+						APP.startClipUpdateTask();
 					}
 					if (key.compareTo("enable_change_wallpaper") == 0) {
 						if (sharedPreferences.getBoolean(key, false)) {
-							app.startWallUpdateTask();
+							APP.startWallUpdateTask();
 						} else {
-							app.stopWallUpdateTask();
+							APP.stopWallUpdateTask();
 						}
 					}
 				} catch (Exception e) {

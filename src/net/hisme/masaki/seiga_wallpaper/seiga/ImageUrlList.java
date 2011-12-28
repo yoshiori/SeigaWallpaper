@@ -1,5 +1,7 @@
 package net.hisme.masaki.seiga_wallpaper.seiga;
 
+import static net.hisme.masaki.seiga_wallpaper.App.APP;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -30,7 +32,7 @@ public class ImageUrlList {
 		images = new ArrayList<String>();
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					App.li.openFileInput(ImageUrlList.url_file)));
+					APP.openFileInput(ImageUrlList.url_file)));
 			String line = null;
 			while ((line = reader.readLine()) != null) {
 				images.add(line);
@@ -44,7 +46,7 @@ public class ImageUrlList {
 		this.images = images;
 		try {
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
-					App.li.openFileOutput(ImageUrlList.url_file,
+					APP.openFileOutput(ImageUrlList.url_file,
 							Context.MODE_PRIVATE)));
 
 			for (String url : images) {

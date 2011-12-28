@@ -1,5 +1,7 @@
 package net.hisme.masaki.seiga_wallpaper.seiga;
 
+import static net.hisme.masaki.seiga_wallpaper.App.APP;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,6 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 
 import net.hisme.masaki.seiga_wallpaper.HTTPClient;
-import net.hisme.masaki.seiga_wallpaper.App;
 import net.hisme.masaki.seiga_wallpaper.R;
 
 import org.w3c.dom.Document;
@@ -31,8 +32,8 @@ public class Clip {
 	}
 
 	private void getImageUrls() throws Exception {
-		String url = App.li.getString(R.string.api_url)
-				+ String.format("/%d", App.li.clipId());
+		String url = APP.getString(R.string.api_url)
+				+ String.format("/%d", APP.clipId());
 		Document document = DocumentBuilderFactory.newInstance()
 				.newDocumentBuilder().parse(HTTPClient.getStream(url));
 		XPath xpath = XPathFactory.newInstance().newXPath();
@@ -50,6 +51,6 @@ public class Clip {
 	 * @throws Exception
 	 */
 	public void save() throws Exception {
-		App.li.imageUrlList().save(image_urls);
+		APP.imageUrlList().save(image_urls);
 	}
 }

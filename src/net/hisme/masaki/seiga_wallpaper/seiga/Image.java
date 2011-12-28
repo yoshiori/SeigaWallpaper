@@ -1,15 +1,15 @@
 package net.hisme.masaki.seiga_wallpaper.seiga;
 
+import static net.hisme.masaki.seiga_wallpaper.App.APP;
+
 import java.io.File;
 import java.io.OutputStream;
 
 import net.hisme.masaki.seiga_wallpaper.HTTPClient;
-import net.hisme.masaki.seiga_wallpaper.App;
-
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 
 public class Image {
 	private String url;
@@ -28,9 +28,9 @@ public class Image {
 
 	private void load() throws Exception {
 		String filename = filename();
-		File path = App.li.getFileStreamPath(filename);
+		File path = APP.getFileStreamPath(filename);
 		if (path.exists()) {
-			bitmap = BitmapFactory.decodeStream(App.li.openFileInput(filename));
+			bitmap = BitmapFactory.decodeStream(APP.openFileInput(filename));
 		} else {
 			download();
 		}
@@ -43,7 +43,7 @@ public class Image {
 
 	private void download() throws Exception {
 		bitmap = BitmapFactory.decodeStream(HTTPClient.getStream(url));
-		OutputStream output = App.li.openFileOutput(filename(),
+		OutputStream output = APP.openFileOutput(filename(),
 				Context.MODE_PRIVATE);
 		bitmap.compress(CompressFormat.PNG, 100, output);
 	}

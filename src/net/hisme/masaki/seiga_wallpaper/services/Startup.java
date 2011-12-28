@@ -1,5 +1,7 @@
 package net.hisme.masaki.seiga_wallpaper.services;
 
+import static net.hisme.masaki.seiga_wallpaper.App.APP;
+
 import net.hisme.masaki.seiga_wallpaper.App;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,11 +13,11 @@ public class Startup extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 			App.Log.d("Boot Completed");
-			if (App.li.changeWallpaperEnabled()) {
-				App.li.startWallUpdateTask();
+			if (APP.changeWallpaperEnabled()) {
+				APP.startWallUpdateTask();
 			}
-			if (App.li.clipIdIsValid()) {
-				App.li.startClipUpdateTask();
+			if (APP.clipIdIsValid()) {
+				APP.startClipUpdateTask();
 			}
 		}
 	}
