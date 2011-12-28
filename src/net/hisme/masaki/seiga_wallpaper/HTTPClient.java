@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class HTTP_Client {
+public class HTTPClient {
 
 	/**
 	 * GET url and return response as String
@@ -22,7 +22,7 @@ public class HTTP_Client {
 
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					get_stream(url)));
+					getStream(url)));
 			while ((line = reader.readLine()) != null) {
 				buf.append(line);
 			}
@@ -43,7 +43,7 @@ public class HTTP_Client {
 	 * @throws ConnectionError
 	 * @throws MalformedURLException
 	 */
-	public static InputStream get_stream(String url)
+	public static InputStream getStream(String url)
 			throws MalformedURLException {
 		try {
 			return new URL(url).openConnection().getInputStream();

@@ -11,11 +11,11 @@ public class Startup extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 			App.Log.d("Boot Completed");
-			if (App.li.change_wallpaper_enabled()) {
-				App.li.start_wall_update_task();
+			if (App.li.changeWallpaperEnabled()) {
+				App.li.startWallUpdateTask();
 			}
-			if (App.li.clip_id_is_valid()) {
-				App.li.start_clip_update_task();
+			if (App.li.clipIdIsValid()) {
+				App.li.startClipUpdateTask();
 			}
 		}
 	}

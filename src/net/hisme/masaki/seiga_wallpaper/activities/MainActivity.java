@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		if (!App.li.clip_id_is_valid()) {
+		if (!App.li.clipIdIsValid()) {
 			App.li.toast(R.string.startup);
 		}
 	}
@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
 			return true;
 		case R.id.menu_reload:
 			try {
-				App.li.start_clip_update_task();
+				App.li.startClipUpdateTask();
 			} catch (App.InvalidClipId e) {
 				App.li.toast(R.string.invalid_clip_id_error);
 			} catch (Exception e) {
@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
 						try {
 							((ImageView) MainActivity.this
 									.findViewById(R.id.image))
-									.setImageBitmap(App.li.random_image());
+									.setImageBitmap(App.li.randomImage());
 						} catch (Exception e) {
 							App.Log.d(String.format("Exception in reload: %s",
 									e.getMessage()));

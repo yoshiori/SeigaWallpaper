@@ -23,7 +23,7 @@ public class App extends Application {
 		App.li = App.this;
 	}
 
-	public void start_wall_update_task() {
+	public void startWallUpdateTask() {
 		AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
 		if (wall_update_task == null) {
 			wall_update_task = PendingIntent.getService(App.this, 0,
@@ -34,7 +34,7 @@ public class App extends Application {
 				wall_update_task);
 	}
 
-	public void stop_wall_update_task() {
+	public void stopWallUpdateTask() {
 		if (wall_update_task != null) {
 			AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
 			Log.d("disable to update wallpaper");
@@ -42,11 +42,11 @@ public class App extends Application {
 		}
 	}
 
-	public void start_clip_update_task() {
-		stop_clip_update_task();
+	public void startClipUpdateTask() {
+		stopClipUpdateTask();
 		AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-		check_clip_id();
+		checkClipId();
 
 		if (clip_update_task == null) {
 			clip_update_task = PendingIntent.getService(App.this, 0,
@@ -56,7 +56,7 @@ public class App extends Application {
 				(long) 8 * 60 * 60 * 1000, clip_update_task);
 	}
 
-	public void stop_clip_update_task() {
+	public void stopClipUpdateTask() {
 		if (clip_update_task != null) {
 			AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
 			Log.d("disable to update clip");
@@ -64,7 +64,7 @@ public class App extends Application {
 		}
 	}
 
-	public String raw_clip_id() {
+	public String rawClipId() {
 		return PreferenceManager.getDefaultSharedPreferences(App.this)
 				.getString("clip_id", "");
 	}
@@ -72,9 +72,9 @@ public class App extends Application {
 	/**
 	 * @return clip id
 	 */
-	public int clip_id() {
+	public int clipId() {
 		try {
-			int clip_id = Integer.parseInt(raw_clip_id());
+			int clip_id = Integer.parseInt(rawClipId());
 			if (clip_id <= 0)
 				throw new InvalidClipId();
 
@@ -84,25 +84,25 @@ public class App extends Application {
 		}
 	}
 
-	public boolean check_clip_id() {
-		clip_id();
+	public boolean checkClipId() {
+		clipId();
 		return true;
 	}
 
-	public boolean clip_id_is_valid() {
+	public boolean clipIdIsValid() {
 		try {
-			return check_clip_id();
+			return checkClipId();
 		} catch (Exception e) {
 			return false;
 		}
 	}
 
-	public boolean change_wallpaper_enabled() {
+	public boolean changeWallpaperEnabled() {
 		return PreferenceManager.getDefaultSharedPreferences(App.this)
 				.getBoolean("enable_change_wallpaper", false);
 	}
 
-	public ImageUrlList image_url_list() throws Exception {
+	public ImageUrlList imageUrlList() throws Exception {
 		if (image_url_list == null) {
 			this.image_url_list = new ImageUrlList();
 		}
@@ -121,8 +121,8 @@ public class App extends Application {
 	 * @return Bitmap of random image
 	 * @throws Exception
 	 */
-	public Bitmap random_image() throws Exception {
-		return new Image(image_url_list().random()).bitmap();
+	public Bitmap randomImage() throws Exception {
+		return new Image(imageUrlList().random()).bitmap();
 	}
 
 	public static class Log {
@@ -150,7 +150,7 @@ public class App extends Application {
 
 		@Override
 		public String getMessage() {
-			return String.format("Invalid ClipID: '%s'", App.li.raw_clip_id());
+			return String.format("Invalid ClipID: '%s'", App.li.rawClipId());
 		}
 	}
 }

@@ -3,7 +3,7 @@ package net.hisme.masaki.seiga_wallpaper.seiga;
 import java.io.File;
 import java.io.OutputStream;
 
-import net.hisme.masaki.seiga_wallpaper.HTTP_Client;
+import net.hisme.masaki.seiga_wallpaper.HTTPClient;
 import net.hisme.masaki.seiga_wallpaper.App;
 
 import android.content.Context;
@@ -42,7 +42,7 @@ public class Image {
 	}
 
 	private void download() throws Exception {
-		bitmap = BitmapFactory.decodeStream(HTTP_Client.get_stream(url));
+		bitmap = BitmapFactory.decodeStream(HTTPClient.getStream(url));
 		OutputStream output = App.li.openFileOutput(filename(),
 				Context.MODE_PRIVATE);
 		bitmap.compress(CompressFormat.PNG, 100, output);

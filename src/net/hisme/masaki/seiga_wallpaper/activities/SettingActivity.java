@@ -16,7 +16,7 @@ public class SettingActivity extends PreferenceActivity {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.pref);
 		getPreferenceScreen().findPreference("clip_id").setSummary(
-				App.li.raw_clip_id());
+				App.li.rawClipId());
 		getPreferenceScreen().findPreference("clip_id")
 				.setOnPreferenceChangeListener(
 						new Preference.OnPreferenceChangeListener() {
@@ -43,13 +43,13 @@ public class SettingActivity extends PreferenceActivity {
 						SettingActivity.this.getPreferenceScreen()
 								.findPreference(key).setSummary(
 										sharedPreferences.getString(key, ""));
-						app.start_clip_update_task();
+						app.startClipUpdateTask();
 					}
 					if (key.compareTo("enable_change_wallpaper") == 0) {
 						if (sharedPreferences.getBoolean(key, false)) {
-							app.start_wall_update_task();
+							app.startWallUpdateTask();
 						} else {
-							app.stop_wall_update_task();
+							app.stopWallUpdateTask();
 						}
 					}
 				} catch (Exception e) {

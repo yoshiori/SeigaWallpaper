@@ -18,7 +18,7 @@ public class WallUpdater extends Service {
 		App.Log.d("WallUpdater.start");
 		try {
 			WallpaperManager.getInstance(WallUpdater.this).setBitmap(
-					App.li.random_image());
+					App.li.randomImage());
 		} catch (Exception e) {
 			App.Log.d(String.format("Exception in wall updater: %s", e
 					.getMessage()));
